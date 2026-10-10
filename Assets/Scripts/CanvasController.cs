@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CanvasController : MonoBehaviour
 {
-    ColorGridTile[,] canvas_array;
+    [SerializeField] GameObject tile;
+
+
+    ColorGridTile[,] current_painting;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        InitializePainting0();
+
 
     }
 
@@ -20,25 +26,73 @@ public class CanvasController : MonoBehaviour
 
     }
 
-    void InitializeSprite(int height, int width, ColorIdentity background_color = ColorIdentity.white)
+    void InitializeTiles(int height, int width, float scale)
     {
-        canvas_array = new ColorGridTile[height, width];
+        current_painting = new ColorGridTile[height, width];
+        tile.transform.localScale = new Vector3(scale, scale);
+
+        float starting_x_position = 0;
+        float starting_y_position = 0;
+
+
+        starting_y_position = 0 + (scale * (height / 2f)) - (scale / 2);
+        starting_x_position = 0 - (scale * (width / 2f)) + (scale / 2);
+       
+        float x_position = starting_x_position;
+        float y_position = starting_y_position;
+
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                ColorGridTile color_tile = new ColorGridTile();
-                color_tile.current_color_identity = background_color;
-                canvas_array[y, x] = color_tile;
+                ColorGridTile instantiated_tile = Instantiate(tile, new Vector3(x_position, y_position, 0), Quaternion.identity).GetComponent<ColorGridTile>();
+                x_position += scale;
+                instantiated_tile.x_coordinate = x;
+                instantiated_tile.y_coordinate = y;
+                current_painting[y, x] = instantiated_tile;
             }
+
+            x_position = starting_x_position;
+            y_position -= scale;
 
         }
 
     }
 
+    public void InitializePainting0()
+    {
+        int height = 3;
+        int width = 5;
+        float scale = 2f;
 
+        InitializeTiles(height, width, scale);
 
+        ColorIdentity background_0 = ColorIdentity.white;
 
+        ColorIdentity[,] painting_0_colors =
+        {
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white,},
+            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white }
+        };
+
+        ReadyPaintingBackground(height, width, background_0, painting_0_colors);
+
+    }
+
+    public void ReadyPaintingBackground(int height, int width, ColorIdentity background_color, ColorIdentity[,] painting_colors)
+    {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                ColorGridTile tile = current_painting[y, x];
+                tile.actual_color_identity = painting_colors[y, x];
+                tile.current_color_identity = background_color;
+            }
+
+        }
+    }
 
 }
 
