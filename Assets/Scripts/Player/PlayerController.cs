@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 m_movementInput;
     private bool m_flipped;
 
-    public static Action<float> OnInteract;
+    public static Action OnInteract;
 
     private void Start()
     {
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F) && m_playerData.currentState != PlayerState.Talking && m_playerData.currentState != PlayerState.Painting)
             {
                 SetCurrentState(PlayerState.Talking);
+                OnInteract?.Invoke();
             }
 
         }
