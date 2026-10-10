@@ -8,6 +8,7 @@ public class NpcController : MonoBehaviour
     [Header("Player Components")]
     [SerializeField] private NpcData m_npcData;
     [SerializeField] private Collider2D m_collider;
+    [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private Animator m_anim;
 
     public static event Action<DialogueData> OnSendDialogue;
