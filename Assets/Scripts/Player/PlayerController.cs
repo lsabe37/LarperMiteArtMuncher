@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
     private void PlayerDeath()
     {
         m_anim.SetBool("dead", true);
-        m_anim.SetBool("run", false);
+        m_anim.SetBool("walk", false);
         m_rb.velocity = Vector2.zero;
     }
 

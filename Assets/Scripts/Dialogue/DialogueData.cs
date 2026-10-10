@@ -12,7 +12,7 @@ public class DialogueDataClass
     public string[] dialogueLines { get { return m_dialogueLines; } }
 }
 
-[CreateAssetMenu(fileName = "DialogueData", menuName = "Dialogue/DialogueData")]
+[CreateAssetMenu(fileName = "DialogueData", menuName = "Scriptable Objects/DialogueData")]
 public class DialogueData : ScriptableObject
 {
     [SerializeField] private DialogueDataClass m_DataClass;
