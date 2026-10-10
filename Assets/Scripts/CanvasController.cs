@@ -89,6 +89,8 @@ public class CanvasController : MonoBehaviour
                 ColorGridTile tile = current_painting[y, x];
                 tile.actual_color_identity = painting_colors[y, x];
                 tile.current_color_identity = background_color;
+                tile.SetSpriteColor(background_color);
+                tile.SetSpriteColorToRealColor();
             }
 
         }
