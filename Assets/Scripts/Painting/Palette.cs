@@ -10,6 +10,8 @@ public class Palette : MonoBehaviour
     [SerializeField] Sprite blue_splotch;
     [SerializeField] Sprite red_splotch;
     [SerializeField] Sprite yellow_splotch;
+    [SerializeField] Sprite green_splotch;
+
 
 
     [SerializeField] GameObject blotch_0;
@@ -53,6 +55,11 @@ public class Palette : MonoBehaviour
                 case (ColorIdentity.yellow):
                     current_blotch.sprite_renderer.sprite = yellow_splotch;
                     break;
+                case (ColorIdentity.green):
+                {
+                    current_blotch.sprite_renderer.sprite = green_splotch;
+                    break;
+                }
             }
         
         }

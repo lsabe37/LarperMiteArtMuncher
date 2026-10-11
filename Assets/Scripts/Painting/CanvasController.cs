@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class CanvasController : MonoBehaviour
@@ -11,9 +12,13 @@ public class CanvasController : MonoBehaviour
     [SerializeField] Palette palette; // the palette starts below screen and moves up 
     [SerializeField] GameObject frame;
     [SerializeField] TextMeshProUGUI timer_text;
+    [SerializeField] GameObject finish_button;
+    [SerializeField] UnityEngine.UI.Slider accuracy_slider;
 
 
     ColorGridTile[,] current_painting; // player's painting is stored in this 2d array 
+
+    private float player_accuracy = 0;
 
     // ==========================================
 
@@ -163,16 +168,16 @@ public class CanvasController : MonoBehaviour
     {
         ColorIdentity[,] painting_1_colors =
 {
-            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white},
-            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
-            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.black},
-            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
-            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
-            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white}
+            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black}
         };
         InitializePainting(height: 6, width: 6, scale: 1.25f, center_x: 0, center_y: 0.45f, background_color: ColorIdentity.white,
                            colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white }, 
-                           painting_colors: painting_1_colors, wait_time: 4.3f, time_limit: 20, frame_scale: 1.42f);
+                           painting_colors: painting_1_colors, wait_time: 4.3f, time_limit: 17, frame_scale: 1.42f);
     }
 
     public void InitializePainting3()
@@ -243,11 +248,11 @@ public class CanvasController : MonoBehaviour
             {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white},
             {ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.white},
             {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white},
-            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.white}
+            {ColorIdentity.green, ColorIdentity.green, ColorIdentity.green, ColorIdentity.green, ColorIdentity.green, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.green, ColorIdentity.green, ColorIdentity.green}
 
         };
         InitializePainting(height: 10, width: 10, scale: 0.75f, center_x: 0, center_y: 0.47f, background_color: ColorIdentity.white,
-                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white, ColorIdentity.red},
+                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white, ColorIdentity.red, ColorIdentity.green},
                            painting_colors: painting_1_colors, wait_time: 8f, time_limit: 25, wait_time_lower: 0.6f, wait_time_upper: 1.35f, frame_scale: 1.42f);
     }
 
@@ -281,29 +286,38 @@ public class CanvasController : MonoBehaviour
         }
 
         int correctTiles = 0;
-        int totalTiles = current_painting.GetLength(0) * current_painting.GetLength(1);
-
-
-        if (totalTiles == 0)
-        {
-            return false;
-        }
+        int totalTiles = 0;
 
         for (int y = 0; y < current_painting.GetLength(0); y++)
         {
             for (int x = 0; x < current_painting.GetLength(1); x++)
             {
-                if (current_painting[y, x].IsCorrectColor())
+                if (current_painting[y, x].IsBackground() == false) // only non-background tiles count for total tiles 
                 {
-                    correctTiles++;
+                    totalTiles++;
+
+                    if (current_painting[y, x].IsCorrectColor()) // only correct non-background tile give "correct tile" points
+                    {
+                        correctTiles++;
+                    }
+                }
+
+                else if (current_painting[y, x].IsCorrectColor() == false) // however, getting a background tile wrong subtracts from the correct tiles. 
+                {
+                    correctTiles--;
                 }
             }
         }
+
+        
+
         float accuracy = ((float)correctTiles / totalTiles) * 100;
+        accuracy = Mathf.Clamp(accuracy, 0, 100);
+        player_accuracy = accuracy;
         Debug.Log(("Painting Accuracy: " + accuracy + "%"));
         Debug.Log("Correct Tiles: " + correctTiles + "/" + totalTiles);
 
-        if (accuracy > 60)
+        if (accuracy > 75)
         {
             Debug.Log("Painting Passed! Score: " + accuracy);
             return true;
@@ -332,6 +346,7 @@ public class CanvasController : MonoBehaviour
         }
 
         Debug.Log("TIME UP");
+        StopAllCoroutines();
         StartCoroutine(FinishGame());
         yield return null;
 
@@ -345,15 +360,41 @@ public class CanvasController : MonoBehaviour
 
     public IEnumerator FinishGame()
     {
+        
+        Debug.Log("Finish Game coroutine started");
+        finish_button.SetActive(false);
         float move_down_time = 0.3f;
 
         SaveData.current_mouse_color = ColorIdentity.nothing;
         palette.DisablePalette(move_down_time);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(move_down_time);
 
+        Debug.Log("Palette moved down");
+
+        
         Debug.Log("GAME OVER");
         SaveData.passed_painting = CheckPainting();
         SaveData.current_painting++; // such that the next time player enters this scene, the next painting will be displayed 
+
+        Debug.Log("Painting pass checked");
+
+        accuracy_slider.transform.gameObject.SetActive(true);
+        
+        float time_to_fill_bar = 2f;
+        float bar_fill_timer = 0f;
+        float bar_fill_speed = 1f;
+
+        while (bar_fill_timer <= time_to_fill_bar)
+        {
+            accuracy_slider.value = Mathf.Lerp(0, player_accuracy, bar_fill_timer / time_to_fill_bar);
+            bar_fill_timer += Time.deltaTime * bar_fill_speed;
+            bar_fill_speed -= (Time.deltaTime / 4);
+            bar_fill_speed = Mathf.Clamp(bar_fill_speed, 0.5f, 99f);
+            yield return null;
+        }
+
+        Debug.Log("DONE");
+
         yield return null;
     }
 

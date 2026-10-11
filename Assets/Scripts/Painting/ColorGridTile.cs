@@ -34,6 +34,12 @@ public class ColorGridTile : MonoBehaviour
         return (current_color_identity == actual_color_identity);
     }
 
+    public bool IsBackground()
+    {
+        return (actual_color_identity == background_color_identity);
+    }
+
+
     public void SetSpriteColor(ColorIdentity identity)
     {
         tile_sprite.color = GetColorFromIdentity(identity);
@@ -64,6 +70,9 @@ public class ColorGridTile : MonoBehaviour
             case ColorIdentity.blue:
                 return RGBConverter(new Color(59, 69, 102));
 
+            case ColorIdentity.green:
+                return RGBConverter(new Color(38, 92, 66));
+
             default:
                 return new Color(0, 0, 0);
 
@@ -93,7 +102,7 @@ public class ColorGridTile : MonoBehaviour
         mouse_entered = true;
     }
 
-    public IEnumerator ChangeTileColor(ColorIdentity new_color_identity, float wait_time = 1f)
+    public IEnumerator ChangeTileColor(ColorIdentity new_color_identity, float wait_time = 1f, float time_before_lerp = 0.7f)
     {
 
         if (new_color_identity == ColorIdentity.nothing) yield break;
@@ -102,6 +111,9 @@ public class ColorGridTile : MonoBehaviour
         Color color_new = GetColorFromIdentity(new_color_identity);
 
         current_color_identity = new_color_identity;
+
+        yield return new WaitForSeconds(time_before_lerp);
+
 
         if (wait_time == 0f)
         {
