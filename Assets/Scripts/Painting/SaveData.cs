@@ -8,8 +8,7 @@ public static class SaveData // basically a global class, can be accessed from a
 
     public static int current_painting = 0;
 
-    public static float painting_correctness_score = 0; // every time player finishes a painting/runs out of time, store the score to here. 
-                        // min = 0, max = 7. Total of 8 paintings. 
+    public static bool passed_painting; // every time player finishes a painting/runs out of time, store if they passed/failed here
 
 
 }
