@@ -8,6 +8,7 @@ public class ColorGridTile : MonoBehaviour
 {
     public ColorIdentity current_color_identity;
     public ColorIdentity actual_color_identity;
+    public ColorIdentity background_color_identity;
     public SpriteRenderer tile_sprite;
     public int x_coordinate;
     public int y_coordinate;
@@ -89,7 +90,7 @@ public class ColorGridTile : MonoBehaviour
         mouse_entered = true;
     }
 
-    IEnumerator ChangeTileColor(ColorIdentity new_color_identity, float wait_time = 1f)
+    public IEnumerator ChangeTileColor(ColorIdentity new_color_identity, float wait_time = 1f)
     {
 
         if (new_color_identity == ColorIdentity.nothing) yield break;
@@ -100,22 +101,11 @@ public class ColorGridTile : MonoBehaviour
         current_color_identity = new_color_identity;
 
         float timer = 0f;
-        float starting_rotation = transform.eulerAngles.x;
-        float rotation_speed = 3f;
 
         while (timer <= wait_time)
         {
             timer += Time.deltaTime;
             tile_sprite.color = Color.Lerp(color_current, color_new, timer / wait_time);
-
-            if (transform.eulerAngles.x <= 180)
-            {
-                transform.rotation = Quaternion.Euler(starting_rotation + ((timer / (wait_time / rotation_speed)) * (180 - starting_rotation)), 0, 0);
-
-            }
-
-
-
             yield return null;
         }
 

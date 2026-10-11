@@ -64,6 +64,8 @@ public class CanvasController : MonoBehaviour
         int width = 5;
         float scale = 2f;
 
+        ColorIdentity background_color = ColorIdentity.white;
+
         List<ColorIdentity> colors_required = new List<ColorIdentity> {ColorIdentity.black, ColorIdentity.white };
 
 
@@ -76,11 +78,11 @@ public class CanvasController : MonoBehaviour
             {ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white }
         };
 
-        SetTilestoActualColors(height, width, painting_0_colors);
+        SetTilestoActualColors(height, width, painting_0_colors, background_color, 4);
         palette.InitializePalette(colors_required);
     }
 
-    public void SetTilestoActualColors(int height, int width, ColorIdentity[,] painting_colors)
+    public void SetTilestoActualColors(int height, int width, ColorIdentity[,] painting_colors, ColorIdentity background_color, float wait_time)
     {
         for (int y = 0; y < height; y++)
         {
@@ -89,7 +91,11 @@ public class CanvasController : MonoBehaviour
                 ColorGridTile tile = current_painting[y, x];
                 tile.actual_color_identity = painting_colors[y, x];
                 tile.current_color_identity = tile.actual_color_identity;
+                tile.background_color_identity = background_color;
                 tile.SetSpriteColorToRealColor();
+
+                wait_time *= Random.Range(0.8f, 1f);
+                tile.StartCoroutine(tile.ChangeTileColor(tile.background_color_identity, wait_time));
             }
 
         }
