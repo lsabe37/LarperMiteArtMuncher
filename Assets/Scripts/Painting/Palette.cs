@@ -7,19 +7,23 @@ public class Palette : MonoBehaviour
 {
     [SerializeField] Sprite black_splotch;
     [SerializeField] Sprite white_splotch;
-    [SerializeField] Sprite green_splotch;
+    [SerializeField] Sprite blue_splotch;
     [SerializeField] Sprite red_splotch;
+    [SerializeField] Sprite yellow_splotch;
+
 
     [SerializeField] GameObject blotch_0;
     [SerializeField] GameObject blotch_1;
     [SerializeField] GameObject blotch_2;
     [SerializeField] GameObject blotch_3;
+    [SerializeField] GameObject blotch_4;
+
 
     private List<GameObject> blotch_list;
 
     private void Awake()
     {
-        blotch_list = new List<GameObject> { blotch_0, blotch_1, blotch_2, blotch_3};
+        blotch_list = new List<GameObject> { blotch_0, blotch_1, blotch_2, blotch_3, blotch_4};
     }
 
     public void InitializePalette(List<ColorIdentity> colors_required, float wait_time, float move_time)
@@ -43,8 +47,11 @@ public class Palette : MonoBehaviour
                 case (ColorIdentity.red):
                     current_blotch.sprite_renderer.sprite = red_splotch;
                     break;
-                case (ColorIdentity.green):
-                    current_blotch.sprite_renderer.sprite = green_splotch;
+                case (ColorIdentity.blue):
+                    current_blotch.sprite_renderer.sprite = blue_splotch;
+                    break;
+                case (ColorIdentity.yellow):
+                    current_blotch.sprite_renderer.sprite = yellow_splotch;
                     break;
             }
         

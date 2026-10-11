@@ -19,7 +19,7 @@ public class CanvasController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializePainting6();
+        InitializePainting7();
     }
 
     // Update is called once per frame
@@ -227,6 +227,26 @@ public class CanvasController : MonoBehaviour
                            painting_colors: painting_1_colors, wait_time: 8f, time_limit: 25, wait_time_lower: 0.6f, wait_time_upper: 1.35f, frame_scale: 1.42f);
     }
 
+    public void InitializePainting7()
+    {
+        ColorIdentity[,] painting_1_colors =
+{
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.yellow,ColorIdentity.white, ColorIdentity.yellow,ColorIdentity.white, ColorIdentity.yellow,ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.yellow,ColorIdentity.yellow,ColorIdentity.yellow,ColorIdentity.yellow,ColorIdentity.yellow,ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.blue,  ColorIdentity.blue,  ColorIdentity.blue,  ColorIdentity.blue,  ColorIdentity.blue,  ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.blue,  ColorIdentity.black, ColorIdentity.blue,  ColorIdentity.black, ColorIdentity.blue,  ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.blue,  ColorIdentity.blue,  ColorIdentity.blue,  ColorIdentity.blue,  ColorIdentity.blue,  ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.red,   ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.blue,  ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.blue,  ColorIdentity.white, ColorIdentity.black, ColorIdentity.white}
+
+        };
+        InitializePainting(height: 10, width: 10, scale: 0.75f, center_x: 0, center_y: 0.47f, background_color: ColorIdentity.white,
+                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white, ColorIdentity.red, ColorIdentity.blue, ColorIdentity.yellow},
+                           painting_colors: painting_1_colors, wait_time: 10f, time_limit: 27, wait_time_lower: 0.4f, wait_time_upper: 1f, frame_scale: 1.42f);
+    }
 
     public IEnumerator InitializeTimer(int time_limit)
     {

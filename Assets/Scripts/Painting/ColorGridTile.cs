@@ -58,8 +58,11 @@ public class ColorGridTile : MonoBehaviour
             case ColorIdentity.red:
                 return RGBConverter(new Color(162, 38, 5));
 
-            case ColorIdentity.green:
-                return RGBConverter(new Color(38, 92, 66));
+            case ColorIdentity.yellow:
+                return RGBConverter(new Color(255, 231, 96));
+
+            case ColorIdentity.blue:
+                return RGBConverter(new Color(59, 69, 102));
 
             default:
                 return new Color(0, 0, 0);
