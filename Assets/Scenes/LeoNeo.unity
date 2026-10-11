@@ -543,7 +543,7 @@ Transform:
   m_GameObject: {fileID: 1493245696}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.16, y: -0.91, z: -10}
+  m_LocalPosition: {x: -3.21, y: -0.88, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -725,6 +725,7 @@ MonoBehaviour:
   m_playerData: {fileID: 11400000, guid: 7dfb829fbb95cfa43ac13cd00bafa3be, type: 2}
   m_rb: {fileID: 2051883242}
   m_anim: {fileID: 2051883239}
+  sceneManager: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 2097152
@@ -851,7 +852,7 @@ Transform:
   m_GameObject: {fileID: 2051883238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.16, y: -0.91, z: 0}
+  m_LocalPosition: {x: -3.21, y: -0.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
