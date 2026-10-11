@@ -14,12 +14,18 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 m_movementInput;
     private bool m_flipped;
+    private bool m_closeToNpc;
 
     public static Action OnInteract;
 
     private void Start()
     {
         SetCurrentState(PlayerState.Idle);
+    }
+
+    private void OnEnable()
+    {
+        DialogueManager.EndDialogueState += EndTalkState;
     }
 
     private void Update()
@@ -51,13 +57,12 @@ public class PlayerController : MonoBehaviour
             // F to talk to Npc
             if (Input.GetKeyDown(KeyCode.F) && m_playerData.currentState != PlayerState.Talking && m_playerData.currentState != PlayerState.Painting)
             {
-                SetCurrentState(PlayerState.Talking);
-                OnInteract?.Invoke();
+                if(m_closeToNpc == true)
+                {
+                    SetCurrentState(PlayerState.Talking);
+                    OnInteract?.Invoke();
+                }
             }
-
-            // Perform raycast
-            PerformRaycast();
-
         }
     }
 
@@ -96,6 +101,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void EndTalkState()
+    {
+        SetCurrentState(PlayerState.Idle);
+    }
+
     private void ExitActionState()
     {
         if (m_rb.velocity != Vector2.zero)
@@ -126,19 +136,28 @@ public class PlayerController : MonoBehaviour
         m_rb.velocity = Vector2.zero;
     }
 
-    // Raycast logic
-    private void PerformRaycast()
+
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        Vector2 origin = transform.position;
-        Vector2 direction = transform.right;
-
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, m_playerData.raycastDistance, targetLayer);
-
-        Debug.DrawRay(origin, direction * m_playerData.raycastDistance, hit.collider != null ? Color.green : Color.red);
-
-        if (hit.collider != null)
+        if (collider.CompareTag("Npc"))
         {
-            Debug.Log("Hit object: " + hit.collider.gameObject.name);
+            Debug.Log("Interacting with Npc");
+
+            NpcController npcController = collider.gameObject.GetComponent<NpcController>();
+            m_closeToNpc = true;
+            npcController.IsSpeaking = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Npc"))
+        {
+            Debug.Log("No longer interacting with Npc");
+
+            NpcController npcController = collider.gameObject.GetComponent<NpcController>();
+            m_closeToNpc = false;
+            npcController.IsSpeaking = false;
         }
     }
 

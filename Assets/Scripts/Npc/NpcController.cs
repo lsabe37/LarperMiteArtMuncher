@@ -5,11 +5,12 @@ public enum NpcState { Idle, Talking }
 
 public class NpcController : MonoBehaviour
 {
-    [Header("Player Components")]
+    [Header("Npc Components")]
     [SerializeField] private NpcData m_npcData;
     [SerializeField] private Collider2D m_collider;
     [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private Animator m_anim;
+    public bool IsSpeaking;
 
     public static event Action<DialogueData> OnSendDialogue;
 
@@ -28,7 +29,6 @@ public class NpcController : MonoBehaviour
         PlayerController.OnInteract -= SendDialogue;
     }
 
-
     private void SetCurrentState(NpcState state)
     {
         m_npcData.currentState = state;
@@ -46,6 +46,8 @@ public class NpcController : MonoBehaviour
 
     private void SendDialogue()
     {
+        if (IsSpeaking == false) return;
+
         OnSendDialogue?.Invoke(m_npcData.npcDialogue);
     }
 }
