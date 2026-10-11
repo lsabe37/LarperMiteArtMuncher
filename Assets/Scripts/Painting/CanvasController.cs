@@ -17,8 +17,6 @@ public class CanvasController : MonoBehaviour
     void Start()
     {
         InitializePainting0();
-
-
     }
 
     // Update is called once per frame
@@ -71,8 +69,6 @@ public class CanvasController : MonoBehaviour
 
         InitializeTiles(height, width, scale);
 
-        ColorIdentity background_0 = ColorIdentity.white;
-
         ColorIdentity[,] painting_0_colors =
         {
             {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
@@ -80,11 +76,11 @@ public class CanvasController : MonoBehaviour
             {ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white }
         };
 
-        ReadyPaintingBackground(height, width, background_0, painting_0_colors);
+        SetTilestoActualColors(height, width, painting_0_colors);
         palette.InitializePalette(colors_required);
     }
 
-    public void ReadyPaintingBackground(int height, int width, ColorIdentity background_color, ColorIdentity[,] painting_colors)
+    public void SetTilestoActualColors(int height, int width, ColorIdentity[,] painting_colors)
     {
         for (int y = 0; y < height; y++)
         {
@@ -92,8 +88,7 @@ public class CanvasController : MonoBehaviour
             {
                 ColorGridTile tile = current_painting[y, x];
                 tile.actual_color_identity = painting_colors[y, x];
-                tile.current_color_identity = background_color;
-                tile.SetSpriteColor(background_color);
+                tile.current_color_identity = tile.actual_color_identity;
                 tile.SetSpriteColorToRealColor();
             }
 
