@@ -100,6 +100,12 @@ public class ColorGridTile : MonoBehaviour
 
         current_color_identity = new_color_identity;
 
+        if (wait_time == 0f)
+        {
+            tile_sprite.color = color_new;
+            yield break; 
+        }
+
         float timer = 0f;
 
         while (timer <= wait_time)

@@ -16,7 +16,7 @@ public class CanvasController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializePainting3();
+        InitializePainting6();
     }
 
     // Update is called once per frame
@@ -25,10 +25,10 @@ public class CanvasController : MonoBehaviour
 
     }
 
-    void InitializePainting(int height, int width, float scale, float center_x, float center_y, ColorIdentity background_color, List<ColorIdentity> colors_required, ColorIdentity[,] painting_colors, float wait_time)
+    void InitializePainting(int height, int width, float scale, float center_x, float center_y, ColorIdentity background_color, List<ColorIdentity> colors_required, ColorIdentity[,] painting_colors, float wait_time, float wait_time_lower = 0.35f, float wait_timer_upper = 1.35f)
     {
         InitializeTiles(height, width, scale, center_x, center_y);
-        SetTilestoActualColors(height, width, painting_colors, background_color, wait_time);
+        SetTilestoActualColors(height, width, painting_colors, background_color, wait_time, wait_time_lower, wait_timer_upper);
         palette.InitializePalette(colors_required);
     }
 
@@ -65,7 +65,7 @@ public class CanvasController : MonoBehaviour
 
     }
 
-    public void SetTilestoActualColors(int height, int width, ColorIdentity[,] painting_colors, ColorIdentity background_color, float wait_time)
+    public void SetTilestoActualColors(int height, int width, ColorIdentity[,] painting_colors, ColorIdentity background_color, float wait_time, float wait_time_lower, float wait_time_upper)
     {
         for (int y = 0; y < height; y++)
         {
@@ -78,7 +78,7 @@ public class CanvasController : MonoBehaviour
                 tile.SetSpriteColorToRealColor();
 
                 
-                float individual_wait_time = wait_time * Random.Range(0.3f, 1.35f);
+                float individual_wait_time = wait_time * Random.Range(wait_time_lower, wait_time_upper);
                 tile.StartCoroutine(tile.ChangeTileColor(tile.background_color_identity, individual_wait_time));
             }
 
@@ -142,6 +142,60 @@ public class CanvasController : MonoBehaviour
                            colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white }, painting_colors: painting_1_colors, wait_time: 4.3f);
     }
 
+    public void InitializePainting4()
+    {
+        ColorIdentity[,] painting_1_colors =
+{
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white},
+            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white}
+
+        };
+        InitializePainting(height: 8, width: 8, scale: 1f, center_x: 0, center_y: 0.5f, background_color: ColorIdentity.white,
+                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white, ColorIdentity.red }, painting_colors: painting_1_colors, wait_time: 5f);
+    }
+
+    public void InitializePainting5()
+    {
+        ColorIdentity[,] painting_1_colors =
+{
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.red},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.white},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white}
+        };
+        InitializePainting(height: 9, width: 9, scale: 0.85f, center_x: 0, center_y: 0.6f, background_color: ColorIdentity.white,
+                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white, ColorIdentity.red }, painting_colors: painting_1_colors, wait_time: 5f);
+    }
+    public void InitializePainting6()
+    {
+        ColorIdentity[,] painting_1_colors =
+{
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white},
+            {ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.red,   ColorIdentity.red,   ColorIdentity.white, ColorIdentity.white, ColorIdentity.white}
+
+        };
+        InitializePainting(height: 10, width: 10, scale: 0.75f, center_x: 0, center_y: 0.6f, background_color: ColorIdentity.white,
+                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white, ColorIdentity.red}, painting_colors: painting_1_colors, wait_time: 8f, wait_time_lower: 0.6f, wait_timer_upper: 1.35f);
+    }
 
 }
 
