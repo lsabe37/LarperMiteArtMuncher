@@ -16,13 +16,20 @@ public class CanvasController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializePainting0();
+        InitializePainting3();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void InitializePainting(int height, int width, float scale, float center_x, float center_y, ColorIdentity background_color, List<ColorIdentity> colors_required, ColorIdentity[,] painting_colors, float wait_time)
+    {
+        InitializeTiles(height, width, scale, center_x, center_y);
+        SetTilestoActualColors(height, width, painting_colors, background_color, wait_time);
+        palette.InitializePalette(colors_required);
     }
 
     void InitializeTiles(int height, int width, float scale, float center_x = 0f, float center_y = 0f)
@@ -58,26 +65,6 @@ public class CanvasController : MonoBehaviour
 
     }
 
-    public void InitializePainting(int height, int width, float scale, ColorIdentity background_color, List<ColorIdentity> colors_required, ColorIdentity[,] painting_colors, float wait_time)
-    {
-        InitializeTiles(height, width, scale);
-        SetTilestoActualColors(height, width, painting_colors, background_color, 6);
-        palette.InitializePalette(colors_required);
-    }
-
-
-    public void InitializePainting0()
-    {
-        ColorIdentity[,] painting_0_colors =
-{
-            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black},
-            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
-            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
-            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white}
-        };
-        InitializePainting(4, 4, 2f, ColorIdentity.white, new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white }, painting_0_colors, 6f);
-    }
-
     public void SetTilestoActualColors(int height, int width, ColorIdentity[,] painting_colors, ColorIdentity background_color, float wait_time)
     {
         for (int y = 0; y < height; y++)
@@ -90,12 +77,71 @@ public class CanvasController : MonoBehaviour
                 tile.background_color_identity = background_color;
                 tile.SetSpriteColorToRealColor();
 
-                wait_time *= Random.Range(0.8f, 1f);
-                tile.StartCoroutine(tile.ChangeTileColor(tile.background_color_identity, wait_time));
+                
+                float individual_wait_time = wait_time * Random.Range(0.3f, 1.35f);
+                tile.StartCoroutine(tile.ChangeTileColor(tile.background_color_identity, individual_wait_time));
             }
 
         }
     }
+    public void InitializePainting0()
+    {
+        ColorIdentity[,] painting_0_colors =
+{
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white}
+        };
+        InitializePainting(height: 4, width: 4, scale: 2f, center_x: 0, center_y: 0.5f, background_color: ColorIdentity.white, 
+                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white }, painting_colors: painting_0_colors, wait_time: 4f);
+    }
+    public void InitializePainting1()
+    {
+        ColorIdentity[,] painting_1_colors =
+{
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black}
+        };
+        InitializePainting(height: 5, width: 5, scale: 1.5f, center_x: 0, center_y: 0, background_color: ColorIdentity.white,
+                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white }, painting_colors: painting_1_colors, wait_time: 5f); 
+    }
+
+    public void InitializePainting2()
+    {
+        ColorIdentity[,] painting_1_colors =
+{
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white}
+        };
+        InitializePainting(height: 6, width: 6, scale: 1.25f, center_x: 0, center_y: 0.5f, background_color: ColorIdentity.white,
+                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white }, painting_colors: painting_1_colors, wait_time: 4.3f);
+    }
+
+    public void InitializePainting3()
+    {
+        ColorIdentity[,] painting_1_colors =
+{
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white}
+
+        };
+        InitializePainting(height: 7, width: 7, scale: 1.1f, center_x: 0, center_y: 0.5f, background_color: ColorIdentity.white,
+                           colors_required: new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white }, painting_colors: painting_1_colors, wait_time: 4.3f);
+    }
+
 
 }
 
