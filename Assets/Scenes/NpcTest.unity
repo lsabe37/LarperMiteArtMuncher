@@ -1471,6 +1471,9 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 2097152
+  m_spotlightA: {fileID: 2179337983940699968, guid: 6f8a7830e60abca488344e7de830154e, type: 3}
+  m_spotlightB: {fileID: 459966229235478411, guid: 03e5fd77a3e7b8843a43ad28902a4d05, type: 3}
+  m_spotlightC: {fileID: 6374029849614887496, guid: d1e3c97bf1ec024449a9707e4f3a1949, type: 3}
 --- !u!50 &835578901
 Rigidbody2D:
   serializedVersion: 4
