@@ -9,18 +9,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerData m_playerData;
     [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private Animator m_anim;
+    [SerializeField] private SceneManagement sceneManager;
 
     [SerializeField] LayerMask targetLayer;
 
     private Vector2 m_movementInput;
     private bool m_flipped;
     private bool m_closeToNpc;
+    private bool m_closeToPainting;
 
     public static Action OnInteract;
 
     private void Start()
     {
         SetCurrentState(PlayerState.Idle);
+        CheckSaveData();
+    }
+
+    private void CheckSaveData()
+    {
+        transform.position = SaveData.saved_position;
     }
 
     private void OnEnable()
@@ -70,6 +78,17 @@ public class PlayerController : MonoBehaviour
                     OnInteract?.Invoke();
                 }
             }
+
+            // G to interact with painting
+            if (Input.GetKeyDown(KeyCode.G) && m_playerData.currentState != PlayerState.Talking && m_playerData.currentState != PlayerState.Painting)
+            {
+                if (m_closeToPainting == true)
+                {
+                    SetCurrentState(PlayerState.Painting);
+                    SaveData.saved_position = transform.position;
+                    sceneManager.LoadPainting();
+                }
+            }
         }
     }
 
@@ -95,11 +114,11 @@ public class PlayerController : MonoBehaviour
                 m_anim.SetBool("walk", true);
                 break;
             case PlayerState.Talking:
-                m_anim.SetTrigger("interact");
+                m_anim.SetBool("walk", false);
                 m_rb.velocity = Vector2.zero;
                 break;
             case PlayerState.Painting:
-                m_anim.SetTrigger("interact");
+                m_anim.SetBool("walk", false);
                 m_rb.velocity = Vector2.zero;
                 break;
             case PlayerState.Dead:
@@ -148,6 +167,13 @@ public class PlayerController : MonoBehaviour
             m_closeToNpc = true;
             npcController.IsSpeaking = true;
         }
+
+        else if (collider.CompareTag("Painting"))
+        {
+            Debug.Log("Interacting with Painting");
+
+            m_closeToPainting = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
@@ -159,6 +185,13 @@ public class PlayerController : MonoBehaviour
             NpcController npcController = collider.gameObject.GetComponent<NpcController>();
             m_closeToNpc = false;
             npcController.IsSpeaking = false;
+        }
+
+        else if (collider.CompareTag("Painting"))
+        {
+            Debug.Log("No longer interacting with Painting");
+
+            m_closeToPainting = false;
         }
     }
 
