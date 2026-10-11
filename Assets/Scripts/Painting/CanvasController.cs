@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class CanvasController : MonoBehaviour
 {
     [SerializeField] GameObject tile;
+    [SerializeField] Palette palette;
 
 
     ColorGridTile[,] current_painting;
@@ -26,7 +27,7 @@ public class CanvasController : MonoBehaviour
 
     }
 
-    void InitializeTiles(int height, int width, float scale)
+    void InitializeTiles(int height, int width, float scale, float center_x = 0f, float center_y = 0f)
     {
         current_painting = new ColorGridTile[height, width];
         tile.transform.localScale = new Vector3(scale, scale);
@@ -35,8 +36,8 @@ public class CanvasController : MonoBehaviour
         float starting_y_position = 0;
 
 
-        starting_y_position = 0 + (scale * (height / 2f)) - (scale / 2);
-        starting_x_position = 0 - (scale * (width / 2f)) + (scale / 2);
+        starting_y_position = center_y + (scale * (height / 2f)) - (scale / 2);
+        starting_x_position = center_x - (scale * (width / 2f)) + (scale / 2);
        
         float x_position = starting_x_position;
         float y_position = starting_y_position;
@@ -65,6 +66,9 @@ public class CanvasController : MonoBehaviour
         int width = 5;
         float scale = 2f;
 
+        List<ColorIdentity> colors_required = new List<ColorIdentity> {ColorIdentity.black, ColorIdentity.white };
+
+
         InitializeTiles(height, width, scale);
 
         ColorIdentity background_0 = ColorIdentity.white;
@@ -77,7 +81,7 @@ public class CanvasController : MonoBehaviour
         };
 
         ReadyPaintingBackground(height, width, background_0, painting_0_colors);
-
+        palette.InitializePalette(colors_required);
     }
 
     public void ReadyPaintingBackground(int height, int width, ColorIdentity background_color, ColorIdentity[,] painting_colors)

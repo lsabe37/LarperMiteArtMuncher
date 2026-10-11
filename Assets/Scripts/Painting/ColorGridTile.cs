@@ -55,4 +55,9 @@ public class ColorGridTile : MonoBehaviour
         return (new Color(RGB255.r / 255f, RGB255.g / 255f, RGB255.b / 255f));
 
     }
+
+    private void OnMouseClick()
+    {
+        
+    }
 }

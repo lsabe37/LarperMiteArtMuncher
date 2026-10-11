@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum ColorIdentity
 {
+    nothing = -1,
     white = 0,
     black = 1,
     red = 2,
