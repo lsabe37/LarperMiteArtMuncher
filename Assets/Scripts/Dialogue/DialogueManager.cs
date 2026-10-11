@@ -7,6 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
     // this script handles starting, progress, and ending dialogue with NPC's
 
+    [SerializeField] private GameObject uiBackground;
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text speakerName;
     [SerializeField] private TMP_Text dialogueText;
@@ -36,6 +37,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
+        uiBackground.SetActive(true);
         dialogueBox.SetActive(true);
 
         speakerName.text = currentData.DataClass.speakerName;
@@ -53,6 +55,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        uiBackground.SetActive(false);
         dialogueBox.SetActive(false);
         currentData = null;
         _index = 0;

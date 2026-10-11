@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerData m_playerData;
     [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private Animator m_anim;
-    [SerializeField] private GameObject m_interactRange;
+
+    [SerializeField] LayerMask targetLayer;
 
     private Vector2 m_movementInput;
     private bool m_flipped;
@@ -53,6 +54,9 @@ public class PlayerController : MonoBehaviour
                 SetCurrentState(PlayerState.Talking);
                 OnInteract?.Invoke();
             }
+
+            // Perform raycast
+            PerformRaycast();
 
         }
     }
@@ -114,11 +118,28 @@ public class PlayerController : MonoBehaviour
         transform.localScale = localScale;
     }
 
+    // Player death logic
     private void PlayerDeath()
     {
         m_anim.SetBool("dead", true);
         m_anim.SetBool("walk", false);
         m_rb.velocity = Vector2.zero;
+    }
+
+    // Raycast logic
+    private void PerformRaycast()
+    {
+        Vector2 origin = transform.position;
+        Vector2 direction = transform.right;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, m_playerData.raycastDistance, targetLayer);
+
+        Debug.DrawRay(origin, direction * m_playerData.raycastDistance, hit.collider != null ? Color.green : Color.red);
+
+        if (hit.collider != null)
+        {
+            Debug.Log("Hit object: " + hit.collider.gameObject.name);
+        }
     }
 
 }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6089c8fc12c74934eb7a89842dc8506b, type: 3}
   m_Name: AntAData
   m_EditorClassIdentifier: 
-  m_dialogue: {fileID: 0}
+  m_dialogue: {fileID: 11400000, guid: 2ea595b20f9f8f84d818fa4bbf2f5b5f, type: 2}
   m_currentState: 0
