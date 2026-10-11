@@ -16,5 +16,10 @@ MonoBehaviour:
     m_speakerName: Ant A
     m_speakerIcon: {fileID: -1088773509, guid: a84aa27ed4abd77459f9c105a7253dfa, type: 3}
     m_dialogueLines:
-    - Good evening, fellow ant.
-    - I am Ant A.
+    - Good evening, fellow ant. A fine piece of work we have here, no?
+    - Say... how many black squares are in this artwork?
+    m_optionA: 3 squares
+    m_optionB: 5 squares
+    m_correctOption: 0
+    m_correctResponse: Oh hohoho! An astute observation, my friend!
+    m_wrongResponse: By the queen?! You are a fraud!

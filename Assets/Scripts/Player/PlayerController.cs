@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
         SetCurrentState(PlayerState.Idle);
     }
 
+    private void OnEnable()
+    {
+        DialogueManager.EndDialogueState += EndTalkState;
+    }
+
     private void Update()
     {
         if (m_playerData.currentState != PlayerState.Dead)
@@ -94,6 +99,11 @@ public class PlayerController : MonoBehaviour
                 PlayerDeath();
                 break;
         }
+    }
+
+    private void EndTalkState()
+    {
+        SetCurrentState(PlayerState.Idle);
     }
 
     private void ExitActionState()
