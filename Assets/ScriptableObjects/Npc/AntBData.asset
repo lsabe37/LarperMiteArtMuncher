@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: AntBData
   m_EditorClassIdentifier: 
   m_dialogue: {fileID: 11400000, guid: 8f046c51cc2a50f4c8ae55f2982b0022, type: 2}
+  m_Id: 3
+  m_speed: 3
   m_currentState: 0
