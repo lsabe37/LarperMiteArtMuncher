@@ -7,17 +7,15 @@ public class DialogueManager : MonoBehaviour
 {
     // this script handles starting, progress, and ending dialogue with NPC's
 
-    [SerializeField] private GameObject uiBackground;
-    [SerializeField] private GameObject dialogueBox;
-    [SerializeField] private TMP_Text speakerName;
-    [SerializeField] private TMP_Text dialogueText;
-    [SerializeField] private Image speakerIcon;
+    [SerializeField] private GameObject m_uiBackground;
+    [SerializeField] private GameObject m_dialogueBox;
+    [SerializeField] private TMP_Text m_speakerName;
+    [SerializeField] private TMP_Text m_dialogueText;
+    [SerializeField] private Image m_speakerIcon;
 
-    [SerializeField] private DialogueData currentData;
+    public DialogueData currentData;
 
-    public static event Action OnFinishedOrdering;
-
-    private int _index;
+    private int m_index;
 
     private void OnEnable()
     {
@@ -37,29 +35,28 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
-        uiBackground.SetActive(true);
-        dialogueBox.SetActive(true);
+        m_uiBackground.SetActive(true);
+        m_dialogueBox.SetActive(true);
 
-        speakerName.text = currentData.DataClass.speakerName;
-        dialogueText.text = currentData.DataClass.dialogueLines[_index];
-        speakerIcon.sprite = currentData.DataClass.speakerIcon;
+        m_speakerName.text = currentData.DataClass.speakerName;
+        m_dialogueText.text = currentData.DataClass.dialogueLines[m_index];
+        m_speakerIcon.sprite = currentData.DataClass.speakerIcon;
     }
 
     public void NextDialogue()
     {
-        _index++;
+        m_index++;
 
-        if (_index < currentData.DataClass.dialogueLines.Length) dialogueText.text = currentData.DataClass.dialogueLines[_index];
+        if (m_index < currentData.DataClass.dialogueLines.Length) m_dialogueText.text = currentData.DataClass.dialogueLines[m_index];
         else EndDialogue();
     }
 
     public void EndDialogue()
     {
-        uiBackground.SetActive(false);
-        dialogueBox.SetActive(false);
+        m_uiBackground.SetActive(false);
+        m_dialogueBox.SetActive(false);
         currentData = null;
-        _index = 0;
-        OnFinishedOrdering();
+        m_index = 0;
     }
 }
 
