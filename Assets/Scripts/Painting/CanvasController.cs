@@ -131,7 +131,7 @@ public class CanvasController : MonoBehaviour
 
                 
                 float individual_wait_time = wait_time * Random.Range(wait_time_lower, wait_time_upper);
-                tile.StartCoroutine(tile.ChangeTileColor(tile.background_color_identity, individual_wait_time));
+                tile.StartCoroutine(tile.ChangeTileColor(tile.background_color_identity, individual_wait_time, time_before_lerp: 0.7f));
             }
 
         }
@@ -389,7 +389,7 @@ public class CanvasController : MonoBehaviour
             accuracy_slider.value = Mathf.Lerp(0, player_accuracy, bar_fill_timer / time_to_fill_bar);
             bar_fill_timer += Time.deltaTime * bar_fill_speed;
             bar_fill_speed -= (Time.deltaTime / 4);
-            bar_fill_speed = Mathf.Clamp(bar_fill_speed, 0.5f, 99f);
+            bar_fill_speed = Mathf.Clamp(bar_fill_speed, 0.3f, 99f);
             yield return null;
         }
 

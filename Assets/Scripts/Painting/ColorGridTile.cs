@@ -102,7 +102,7 @@ public class ColorGridTile : MonoBehaviour
         mouse_entered = true;
     }
 
-    public IEnumerator ChangeTileColor(ColorIdentity new_color_identity, float wait_time = 1f, float time_before_lerp = 0.7f)
+    public IEnumerator ChangeTileColor(ColorIdentity new_color_identity, float wait_time = 1f, float time_before_lerp = 0f)
     {
 
         if (new_color_identity == ColorIdentity.nothing) yield break;
