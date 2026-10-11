@@ -19,14 +19,35 @@ public class CanvasController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializePainting7();
+        switch (SaveData.current_painting) //save data contains global static data 
+        {
+            case 0:
+                InitializePainting0();
+                break;
+            case 1:
+                InitializePainting1();
+                break;
+            case 2:
+                InitializePainting2();
+                break;
+            case 3:
+                InitializePainting3();
+                break;
+            case 4:
+                InitializePainting4();
+                break;
+            case 5:
+                InitializePainting5();
+                break;
+            case 6:
+                InitializePainting6();
+                break;
+            case 7:
+                InitializePainting7();
+                break;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     void InitializePainting(int height, int width, float scale, float center_x, float center_y,
                             ColorIdentity background_color, List<ColorIdentity> colors_required, ColorIdentity[,] painting_colors,
@@ -39,6 +60,7 @@ public class CanvasController : MonoBehaviour
     {
 
 
+        SaveData.current_mouse_color = ColorIdentity.nothing;
         InitializeTiles(height, width, scale, center_x, center_y);
         InitializeFrame(center_x, center_y, frame_scale);
         SetTilestoActualColors(height, width, painting_colors, background_color, wait_time, wait_time_lower, wait_time_upper);
@@ -280,11 +302,13 @@ public class CanvasController : MonoBehaviour
     {
         float move_down_time = 0.3f;
 
-        MouseData.current_mouse_color = ColorIdentity.nothing;
+        SaveData.current_mouse_color = ColorIdentity.nothing;
         palette.DisablePalette(move_down_time);
         yield return new WaitForSeconds(0.3f);
 
         Debug.Log("GAME OVER");
+        SaveData.current_painting++; // such that the next time player enters this scene, the next painting will be displayed 
+        yield return null;
     }
 
 }

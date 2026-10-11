@@ -22,7 +22,7 @@ public class ColorGridTile : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 StopAllCoroutines();
-                StartCoroutine(ChangeTileColor(MouseData.current_mouse_color));
+                StartCoroutine(ChangeTileColor(SaveData.current_mouse_color));
             }
 
         }        
@@ -80,7 +80,7 @@ public class ColorGridTile : MonoBehaviour
     private void OnMouseDown()
     {
         StopAllCoroutines();
-        StartCoroutine(ChangeTileColor(MouseData.current_mouse_color));
+        StartCoroutine(ChangeTileColor(SaveData.current_mouse_color));
     }
 
     private void OnMouseExit()

@@ -21,8 +21,8 @@ public class Blotch : MonoBehaviour
     {
         if (blotch_enabled == true)
         {
-            MouseData.current_mouse_color = blotch_color;
-            Debug.Log(MouseData.current_mouse_color);
+            SaveData.current_mouse_color = blotch_color;
+            Debug.Log(SaveData.current_mouse_color);
         }
     }
 
