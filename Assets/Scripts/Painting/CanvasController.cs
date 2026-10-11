@@ -17,53 +17,6 @@ public class CanvasController : MonoBehaviour
 
     // ==========================================
 
-    // Painting Validation System - LeoNeo
-
-
-    public bool CheckPainting()
-    {
-        if (current_painting == null)
-        {
-            return false;
-        }
-
-        int correctTiles = 0;
-        int totalTiles = current_painting.GetLength(0) * current_painting.GetLength(1);
-
-
-        if (totalTiles == 0)
-        {
-            return false;
-        }
-
-        for (int y = 0; y < current_painting.GetLength(0); y++)
-        {
-            for (int x = 0; x < current_painting.GetLength(1); x++)
-            {
-                if (current_painting[y, x].IsCorrectColor())
-                {
-                    correctTiles++;
-                }
-            }
-        }
-        float accuracy = ((float)correctTiles / totalTiles) * 100;
-        Debug.Log(("Painting Accuracy: " + accuracy + "%"));
-        Debug.Log("Correct Tiles: " + correctTiles + "/" + totalTiles);
-
-        if (accuracy > 60)
-        {
-            Debug.Log("Painting Passed!"); 
-            return true;
-        }
-        else
-        {
-            Debug.Log("Painting failed!"); 
-            return false;
-        }
-    }
-
-    // ==========================================
-
 
     // Start is called before the first frame update
     void Start()
@@ -319,7 +272,7 @@ public class CanvasController : MonoBehaviour
                            painting_colors: painting_1_colors, wait_time: 10f, time_limit: 27, wait_time_lower: 0.4f, wait_time_upper: 1f, frame_scale: 1.42f);
     }
 
-
+    // Painting Validation System - LeoNeo
     public bool CheckPainting()
     {
         if (current_painting == null)
