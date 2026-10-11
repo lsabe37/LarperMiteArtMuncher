@@ -8,6 +8,7 @@ public class ColorGridTile : MonoBehaviour
 {
     public ColorIdentity current_color_identity;
     public ColorIdentity actual_color_identity;
+    public ColorIdentity background_color_identity;
     public SpriteRenderer tile_sprite;
     public int x_coordinate;
     public int y_coordinate;
@@ -21,7 +22,7 @@ public class ColorGridTile : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 StopAllCoroutines();
-                StartCoroutine(ChangeTileColor(MouseData.current_mouse_color));
+                StartCoroutine(ChangeTileColor(SaveData.current_mouse_color));
             }
 
         }        
@@ -57,8 +58,11 @@ public class ColorGridTile : MonoBehaviour
             case ColorIdentity.red:
                 return RGBConverter(new Color(162, 38, 5));
 
-            case ColorIdentity.green:
-                return RGBConverter(new Color(38, 92, 66));
+            case ColorIdentity.yellow:
+                return RGBConverter(new Color(255, 231, 96));
+
+            case ColorIdentity.blue:
+                return RGBConverter(new Color(59, 69, 102));
 
             default:
                 return new Color(0, 0, 0);
@@ -76,7 +80,7 @@ public class ColorGridTile : MonoBehaviour
     private void OnMouseDown()
     {
         StopAllCoroutines();
-        StartCoroutine(ChangeTileColor(MouseData.current_mouse_color));
+        StartCoroutine(ChangeTileColor(SaveData.current_mouse_color));
     }
 
     private void OnMouseExit()
@@ -89,7 +93,7 @@ public class ColorGridTile : MonoBehaviour
         mouse_entered = true;
     }
 
-    IEnumerator ChangeTileColor(ColorIdentity new_color_identity, float wait_time = 1f)
+    public IEnumerator ChangeTileColor(ColorIdentity new_color_identity, float wait_time = 1f)
     {
 
         if (new_color_identity == ColorIdentity.nothing) yield break;
@@ -99,23 +103,18 @@ public class ColorGridTile : MonoBehaviour
 
         current_color_identity = new_color_identity;
 
+        if (wait_time == 0f)
+        {
+            tile_sprite.color = color_new;
+            yield break; 
+        }
+
         float timer = 0f;
-        float starting_rotation = transform.eulerAngles.x;
-        float rotation_speed = 3f;
 
         while (timer <= wait_time)
         {
             timer += Time.deltaTime;
             tile_sprite.color = Color.Lerp(color_current, color_new, timer / wait_time);
-
-            if (transform.eulerAngles.x <= 180)
-            {
-                transform.rotation = Quaternion.Euler(starting_rotation + ((timer / (wait_time / rotation_speed)) * (180 - starting_rotation)), 0, 0);
-
-            }
-
-
-
             yield return null;
         }
 
