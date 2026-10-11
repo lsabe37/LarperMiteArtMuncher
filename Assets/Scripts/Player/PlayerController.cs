@@ -25,7 +25,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        DialogueManager.EndDialogueState += EndTalkState;
+        DialogueManager.EndDialogueState += SetCurrentState;
+        DialogueManager.OnDeath += SetCurrentState;
+    }
+
+    private void OnDisable()
+    {
+        DialogueManager.EndDialogueState -= SetCurrentState;
+        DialogueManager.OnDeath -= SetCurrentState;
     }
 
     private void Update()
@@ -101,11 +108,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void EndTalkState()
-    {
-        SetCurrentState(PlayerState.Idle);
-    }
-
     private void ExitActionState()
     {
         if (m_rb.velocity != Vector2.zero)
@@ -131,8 +133,7 @@ public class PlayerController : MonoBehaviour
     // Player death logic
     private void PlayerDeath()
     {
-        m_anim.SetBool("dead", true);
-        m_anim.SetBool("walk", false);
+        m_anim.SetTrigger("dead");
         m_rb.velocity = Vector2.zero;
     }
 

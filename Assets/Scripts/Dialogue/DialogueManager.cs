@@ -27,7 +27,10 @@ public class DialogueManager : MonoBehaviour
     private int m_playerSelectedOption;
     private bool m_answeredQuestion;
 
-    public static event Action EndDialogueState;
+    public static event Action<PlayerState> EndDialogueState;
+    public static event Action<NpcState> OnShocked;
+    public static event Action<NpcState> OnSuccess;
+    public static event Action<PlayerState> OnDeath;
 
     private void OnEnable()
     {
@@ -81,12 +84,12 @@ public class DialogueManager : MonoBehaviour
     {
         m_uiBackground.SetActive(false);
         m_dialogueBox.SetActive(false);
-        m_optionsBox.SetActive(false);
+        
         currentData = null;
         m_index = 0;
         m_answeredQuestion = false;
 
-        EndDialogueState?.Invoke();
+        EndDialogueState?.Invoke(PlayerState.Idle);
     }
 
     // select response option logic for buttons
@@ -108,12 +111,16 @@ public class DialogueManager : MonoBehaviour
         if(m_playerSelectedOption == currentData.DataClass.correctOption)
         {
             m_dialogueText.text = currentData.DataClass.correctResponse;
+            OnSuccess?.Invoke(NpcState.Idle);
         }
         else
         {
             m_dialogueText.text = currentData.DataClass.wrongResponse;
+            OnShocked?.Invoke(NpcState.Shocked);
+            OnDeath?.Invoke(PlayerState.Dead);
         }
         m_answeredQuestion = true;
+        m_optionsBox.SetActive(false);
     }
 }
 
