@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum NpcState { Idle, Talking }
+public enum NpcState { Idle, Talking, Shocked }
 
 public class NpcController : MonoBehaviour
 {
@@ -22,11 +22,15 @@ public class NpcController : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.OnInteract += SendDialogue;
+        DialogueManager.OnShocked += SetCurrentState;
+        DialogueManager.OnSuccess += SetCurrentState;
     }
 
     private void OnDisable()
     {
         PlayerController.OnInteract -= SendDialogue;
+        DialogueManager.OnShocked -= SetCurrentState;
+        DialogueManager.OnSuccess += SetCurrentState;
     }
 
     private void SetCurrentState(NpcState state)
@@ -37,9 +41,14 @@ public class NpcController : MonoBehaviour
         {
             case NpcState.Idle:
                 m_anim.SetBool("walk", false);
+                m_anim.SetBool("interact", false);
                 break;
             case NpcState.Talking:
-                m_anim.SetTrigger("interact");
+                m_anim.SetBool("interact", true);
+                break;
+            case NpcState.Shocked:
+                m_anim.SetBool("shock", true);
+                m_anim.SetBool("interact", false);
                 break;
         }
     }
@@ -49,5 +58,6 @@ public class NpcController : MonoBehaviour
         if (IsSpeaking == false) return;
 
         OnSendDialogue?.Invoke(m_npcData.npcDialogue);
+        SetCurrentState(NpcState.Talking);
     }
 }
