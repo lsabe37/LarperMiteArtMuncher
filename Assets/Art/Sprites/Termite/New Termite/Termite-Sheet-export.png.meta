@@ -1,0 +1,963 @@
+fileFormatVersion: 2
+guid: f11b66a2d706f714abe536b97b054212
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Termite-Sheet-export_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 508
+        width: 112
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e0270cf89753845b25a5e3d62f7df7
+      internalID: -1023385638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_1
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 508
+        width: 112
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58172499fe05b274295f7e164ed25c32
+      internalID: -717634672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_2
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 508
+        width: 112
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ca617f6d34ff0429f2708d701c0021
+      internalID: -702173539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_3
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 508
+        width: 110
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065a05412a82913459351e679ac88be2
+      internalID: -1930882646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_4
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 252
+        width: 1328
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c24cbf70d66de44bba22f2a42787998
+      internalID: -690996226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_5
+      rect:
+        serializedVersion: 2
+        x: 4901
+        y: 0
+        width: 663
+        height: 768
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a25ffac4f92bb724fb091ec689828adc
+      internalID: -1532159242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_6
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 252
+        width: 112
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b86e3e7bc19199a44bfb174eeba6094a
+      internalID: 2106096985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_7
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 252
+        width: 112
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01f2874bc3bd793459b9e3cc497ca728
+      internalID: 647202625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_8
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 252
+        width: 112
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f154b168db78c224eb71a5cab27f2ddf
+      internalID: -892028317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_9
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 252
+        width: 110
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c552ae4216c22a47b9e14d6b2fe2080
+      internalID: 2095999726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_10
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 252
+        width: 110
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd0de9a7c84ca648aced24e3e29ef57
+      internalID: 1888562222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_11
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 252
+        width: 110
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d96bdf19750964eaea4142ac646339
+      internalID: 1857583809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_12
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 252
+        width: 110
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355c52fcf13b02d43aa92359e29cf72f
+      internalID: 1586761601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_13
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 0
+        width: 112
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a2b8b170c41529489ecdd47be2583aa
+      internalID: 1576388041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_14
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 0
+        width: 112
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19b2e4320123edc46b72275972558b5c
+      internalID: -107051660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_15
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 0
+        width: 110
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1613f363bd95d454289ee2bf0d0852f6
+      internalID: 1046369372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_16
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 0
+        width: 110
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c64761fd2d004fd46a74e068bf8b68e2
+      internalID: -419761077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_17
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 0
+        width: 110
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 460aee3969c6b6c4daa16ebe649b1652
+      internalID: -1168305651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_18
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 0
+        width: 110
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e216a4152203e4c80eb35216a85897
+      internalID: 1899465056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_19
+      rect:
+        serializedVersion: 2
+        x: 1605
+        y: 0
+        width: 110
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53d0cec78ab4ce74ca702157521c611c
+      internalID: -665109904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_20
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 0
+        width: 110
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b822fa1494068af4d9d166c672d60798
+      internalID: -1803550256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_21
+      rect:
+        serializedVersion: 2
+        x: 2124
+        y: 0
+        width: 110
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b87350093320e27418752a8a3be590ea
+      internalID: 337626778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_22
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 0
+        width: 112
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b55e719592ec5c47bb6d714f8d7451a
+      internalID: -492780090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_23
+      rect:
+        serializedVersion: 2
+        x: 2636
+        y: 4
+        width: 112
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840a5d8c815393a4ba3bdfc9bee75da1
+      internalID: 492696820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_24
+      rect:
+        serializedVersion: 2
+        x: 2892
+        y: 21
+        width: 128
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4417e64c215be774f807c94667ec78b3
+      internalID: 1991070939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_25
+      rect:
+        serializedVersion: 2
+        x: 3140
+        y: 29
+        width: 136
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf6767de2633ef4db220880e1abe771
+      internalID: 1390688751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_26
+      rect:
+        serializedVersion: 2
+        x: 3398
+        y: 54
+        width: 150
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e0a7a4f6609b4740a249d66941f572a
+      internalID: 64522370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_27
+      rect:
+        serializedVersion: 2
+        x: 3653
+        y: 68
+        width: 119
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0213d8124f95886469ec2b6a258a2d30
+      internalID: -1004731144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_28
+      rect:
+        serializedVersion: 2
+        x: 3917
+        y: 54
+        width: 110
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c618c6226c46fe140adac965f5765c9c
+      internalID: -2055120395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_29
+      rect:
+        serializedVersion: 2
+        x: 4173
+        y: 54
+        width: 110
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7051613b55141941b281ace12fdf6e6
+      internalID: -1135244503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_30
+      rect:
+        serializedVersion: 2
+        x: 4429
+        y: 45
+        width: 110
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652a3f2f6e5de0c40a891326a89816e1
+      internalID: -1868156398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_31
+      rect:
+        serializedVersion: 2
+        x: 4693
+        y: 4
+        width: 93
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ee75b5e3f6bdb4faeb3bbc4f182b2b
+      internalID: -2017832752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_32
+      rect:
+        serializedVersion: 2
+        x: 4932
+        y: 0
+        width: 127
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5205c29d13122e64a8b2a29895fd0a41
+      internalID: 580406923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_33
+      rect:
+        serializedVersion: 2
+        x: 5196
+        y: 0
+        width: 112
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a6139844c0c98439b986b587b89ae3
+      internalID: 65903408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_34
+      rect:
+        serializedVersion: 2
+        x: 4877
+        y: 0
+        width: 55
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f215146f83c026428f2921a126f5105
+      internalID: 1006494120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_35
+      rect:
+        serializedVersion: 2
+        x: 5061
+        y: 0
+        width: 55
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d096ada7ccc1c245a2dd3bdf27fd5b1
+      internalID: 291539417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_36
+      rect:
+        serializedVersion: 2
+        x: 5141
+        y: 0
+        width: 30
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95cafda811e98fc4bb2e70246060cc6b
+      internalID: -408740043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Termite-Sheet-export_37
+      rect:
+        serializedVersion: 2
+        x: 5317
+        y: 0
+        width: 30
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33403a4b149cfcb46aa539d5e639f4fd
+      internalID: 1325132534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Termite-Sheet-export_0: -1023385638
+      Termite-Sheet-export_1: -717634672
+      Termite-Sheet-export_10: 1888562222
+      Termite-Sheet-export_11: 1857583809
+      Termite-Sheet-export_12: 1586761601
+      Termite-Sheet-export_13: 1576388041
+      Termite-Sheet-export_14: -107051660
+      Termite-Sheet-export_15: 1046369372
+      Termite-Sheet-export_16: -419761077
+      Termite-Sheet-export_17: -1168305651
+      Termite-Sheet-export_18: 1899465056
+      Termite-Sheet-export_19: -665109904
+      Termite-Sheet-export_2: -702173539
+      Termite-Sheet-export_20: -1803550256
+      Termite-Sheet-export_21: 337626778
+      Termite-Sheet-export_22: -492780090
+      Termite-Sheet-export_23: 492696820
+      Termite-Sheet-export_24: 1991070939
+      Termite-Sheet-export_25: 1390688751
+      Termite-Sheet-export_26: 64522370
+      Termite-Sheet-export_27: -1004731144
+      Termite-Sheet-export_28: -2055120395
+      Termite-Sheet-export_29: -1135244503
+      Termite-Sheet-export_3: -1930882646
+      Termite-Sheet-export_30: -1868156398
+      Termite-Sheet-export_31: -2017832752
+      Termite-Sheet-export_32: 580406923
+      Termite-Sheet-export_33: 65903408
+      Termite-Sheet-export_34: 1006494120
+      Termite-Sheet-export_35: 291539417
+      Termite-Sheet-export_36: -408740043
+      Termite-Sheet-export_37: 1325132534
+      Termite-Sheet-export_4: -690996226
+      Termite-Sheet-export_5: -1532159242
+      Termite-Sheet-export_6: 2106096985
+      Termite-Sheet-export_7: 647202625
+      Termite-Sheet-export_8: -892028317
+      Termite-Sheet-export_9: 2095999726
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
