@@ -16,7 +16,7 @@ public class Palette : MonoBehaviour
 
     private List<GameObject> blotch_list;
 
-    private void Start()
+    private void Awake()
     {
         blotch_list = new List<GameObject> { blotch_0, blotch_1, blotch_2, blotch_3 };
     }
