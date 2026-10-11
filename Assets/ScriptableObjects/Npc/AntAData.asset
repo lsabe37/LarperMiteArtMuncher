@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: AntAData
   m_EditorClassIdentifier: 
   m_dialogue: {fileID: 11400000, guid: 2ea595b20f9f8f84d818fa4bbf2f5b5f, type: 2}
-  m_currentState: 0
+  m_Id: 1
+  m_speed: 3
+  m_currentState: 3
