@@ -58,28 +58,24 @@ public class CanvasController : MonoBehaviour
 
     }
 
+    public void InitializePainting(int height, int width, float scale, ColorIdentity background_color, List<ColorIdentity> colors_required, ColorIdentity[,] painting_colors, float wait_time)
+    {
+        InitializeTiles(height, width, scale);
+        SetTilestoActualColors(height, width, painting_colors, background_color, 6);
+        palette.InitializePalette(colors_required);
+    }
+
+
     public void InitializePainting0()
     {
-        int height = 3;
-        int width = 5;
-        float scale = 2f;
-
-        ColorIdentity background_color = ColorIdentity.white;
-
-        List<ColorIdentity> colors_required = new List<ColorIdentity> {ColorIdentity.black, ColorIdentity.white };
-
-
-        InitializeTiles(height, width, scale);
-
         ColorIdentity[,] painting_0_colors =
-        {
-            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white},
-            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white,},
-            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.white }
+{
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.black, ColorIdentity.black},
+            {ColorIdentity.white, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.white, ColorIdentity.white, ColorIdentity.black},
+            {ColorIdentity.black, ColorIdentity.black, ColorIdentity.black, ColorIdentity.white}
         };
-
-        SetTilestoActualColors(height, width, painting_0_colors, background_color, 4);
-        palette.InitializePalette(colors_required);
+        InitializePainting(4, 4, 2f, ColorIdentity.white, new List<ColorIdentity> { ColorIdentity.black, ColorIdentity.white }, painting_0_colors, 6f);
     }
 
     public void SetTilestoActualColors(int height, int width, ColorIdentity[,] painting_colors, ColorIdentity background_color, float wait_time)
