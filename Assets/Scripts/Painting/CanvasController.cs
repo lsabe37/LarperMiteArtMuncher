@@ -14,6 +14,7 @@ public class CanvasController : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer_text;
     [SerializeField] GameObject finish_button;
     [SerializeField] UnityEngine.UI.Slider accuracy_slider;
+    [SerializeField] private AudioScripting audio;
 
 
     ColorGridTile[,] current_painting; // player's painting is stored in this 2d array 
@@ -26,6 +27,9 @@ public class CanvasController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (audio != null)
+            audio.PlayMinigameMusic();
+        
         switch (SaveData.current_painting) //save data contains global static data 
         {
             case 0:
