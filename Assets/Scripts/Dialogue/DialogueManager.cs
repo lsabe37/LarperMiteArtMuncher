@@ -67,11 +67,11 @@ public class DialogueManager : MonoBehaviour
         if (m_index < currentData.DataClass.dialogueLines.Length)
         {
             m_dialogueText.text = currentData.DataClass.dialogueLines[m_index];
-        }
-            
+        }   
         else
         {
             m_optionsBox.SetActive(true);
+            Debug.Log("Options available!");
         }
 
         if(m_answeredQuestion == true)

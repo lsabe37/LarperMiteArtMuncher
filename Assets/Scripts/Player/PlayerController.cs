@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] LayerMask targetLayer;
 
+    [Header("Spotlight")]
+    [SerializeField] private GameObject m_spotlightA;
+    [SerializeField] private GameObject m_spotlightB;
+    [SerializeField] private GameObject m_spotlightC;
+
     private Vector2 m_movementInput;
     private bool m_flipped;
     private bool m_closeToNpc;
@@ -193,6 +198,22 @@ public class PlayerController : MonoBehaviour
 
             m_closeToPainting = false;
         }
+    }
+
+    private void CreateSpotlightA()
+    {
+        Vector2 currentPos = transform.position;
+        Instantiate(m_spotlightA, currentPos, Quaternion.identity);
+    }
+    private void CreateSpotlightB()
+    {
+        Vector2 currentPos = transform.position;
+        Instantiate(m_spotlightB, currentPos, Quaternion.identity);
+    }
+    private void CreateSpotlightC()
+    {
+        Vector2 currentPos = transform.position;
+        Instantiate(m_spotlightC, currentPos, Quaternion.identity);
     }
 
 }
