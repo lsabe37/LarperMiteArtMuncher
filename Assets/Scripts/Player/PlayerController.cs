@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.SceneManagement; 
 public enum PlayerState { Idle, Walking, Talking, Painting, Dead }
 
 public class PlayerController : MonoBehaviour
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
                 {
                     SetCurrentState(PlayerState.Painting);
                     SaveData.saved_position = transform.position;
-                    sceneManager.LoadPainting();
+                    SceneManager.LoadScene(2);
                 }
             }
         }
