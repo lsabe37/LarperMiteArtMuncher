@@ -26,12 +26,12 @@ public class MovingBackground : MonoBehaviour
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
 
-            if (background1.transform.position.x <= -16.4)
+            if (background1.transform.position.x <= -17.4)
             {
                 background1.transform.position = teleport_position;
             }
 
-            if (background2.transform.position.x <= -16.4)
+            if (background2.transform.position.x <= -17.4)
             {
                 background2.transform.position = teleport_position;
             }
