@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool m_closeToPainting;
 
     public static Action OnInteract;
+    public static Action OnGg;
 
     private void Start()
     {
@@ -214,6 +215,11 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 currentPos = transform.position;
         Instantiate(m_spotlightC, currentPos, Quaternion.identity);
+    }
+
+    private void GameOver()
+    {
+        OnGg?.Invoke();
     }
 
 }
