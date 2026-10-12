@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -394,7 +395,7 @@ public class CanvasController : MonoBehaviour
         }
 
         Debug.Log("DONE");
-
+        SceneManager.LoadScene(1);
         yield return null;
     }
 
