@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D m_rb;
     [SerializeField] private Animator m_anim;
     [SerializeField] private SceneManagement sceneManager;
+    [SerializeField] private AudioScripting audio;
 
     [SerializeField] LayerMask targetLayer;
 
@@ -46,6 +47,9 @@ public class PlayerController : MonoBehaviour
     {
         DialogueManager.EndDialogueState -= SetCurrentState;
         DialogueManager.OnDeath -= SetCurrentState;
+
+        if (audio != null)
+            audio.StopFootsteps();
     }
 
     private void Update()
@@ -93,6 +97,17 @@ public class PlayerController : MonoBehaviour
                     SaveData.saved_position = transform.position;
                     sceneManager.LoadPainting();
                 }
+            }
+        }
+        if (audio != null)
+        {
+            if (m_playerData.currentState == PlayerState.Walking && m_rb.velocity.sqrMagnitude > 0.001f)
+            {
+                audio.StartFootsteps();
+            }
+            else
+            {
+                audio.StopFootsteps();
             }
         }
     }
