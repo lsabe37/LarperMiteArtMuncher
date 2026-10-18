@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public static class SaveData // basically a global class, can be accessed from any scene, data exists independently of scenes/gameobjects 
